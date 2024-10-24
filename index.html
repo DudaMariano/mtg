@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário de Decks</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+  </style>   
+
+</head>
+<body>
+
+  <h1>Formulário de Decks</h1>
+
+  <form id="meuFormulario">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" required><br><br>
+
+    <label for="loja">Loja:</label>
+    <select id="loja" name="loja">
+      <option value="">Selecione a loja</option>
+      <option value="loja1">Loja 1</option>
+      <option value="loja2">Loja 2</option>
+      </select><br><br>
+
+    <label for="dupla">Dupla (Igual companion):</label>
+    <input type="text" id="dupla" name="dupla" required><br><br>
+
+    <label for="deck1">Deck 1:</label>
+    <select id="deck1" name="deck1" required>
+      <option value="">Selecione o deck</option>
+      <option value="deckA">Deck A</option>
+      <option value="deckB">Deck B</option>
+      <option value="deckC">Deck C</option>
+    </select><br><br>
+
+    <label for="deck2">Deck 2:</label>
+    <select id="deck2" name="deck2" required>
+      <option value="">Selecione o deck</option>
+      <option value="deckD">Deck D</option>
+      <option value="deckE">Deck E</option>
+      <option value="deckF">Deck F</option>
+    </select><br><br>
+
+    <label for="classificacao">Classificação:</label>
+    <input type="number" id="classificacao" name="classificacao" required><br><br>
+
+    <label for="combinacao">Combinação dos Decks:</label>
+    <input type="text" id="combinacao" name="combinacao" readonly><br><br>
+
+    <label for="comandante1">Comandante 1:</label>
+    <select id="comandante1" name="comandante1" required>
+      <option value="">Selecione o comandante</option>
+      <option value="comandanteX">Comandante X</option>
+      <option value="comandanteY">Comandante Y</option>
+      <option value="comandanteZ">Comandante Z</option>
+    </select><br><br>
+
+    <label for="comandante2">Comandante 2:</label>
+    <select id="comandante2" name="comandante2" required>
+      <option value="">Selecione o comandante</option>
+      <option value="comandanteW">Comandante W</option>
+      <option value="comandanteV">Comandante V</option>
+      <option value="comandanteU">Comandante U</option>
+    </select><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    // Script para preencher automaticamente "Combinação dos Decks"
+    const deck1Input = document.getElementById('deck1');
+    const deck2Input = document.getElementById('deck2');
+    const combinacaoInput = document.getElementById('combinacao');
+
+    deck1Input.addEventListener('change', atualizarCombinacao);
+    deck2Input.addEventListener('change', atualizarCombinacao);
+
+    function atualizarCombinacao() {
+      combinacaoInput.value = `${deck1Input.value} - ${deck2Input.value}`;
+    }
+
+     const form = document.getElementById('meuFormulario');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      // Colete os dados do formulário aqui
+      // Envie os dados para sua planilha (Google Apps Script, Zapier, etc.)
+      console.log('Dados do formulário:', {
+        data: document.getElementById('data').value,
+        // ... outros campos
+      });
+      alert('Dados enviados com sucesso!');
+    });
+  </script>
+
+</body>
+</html>
